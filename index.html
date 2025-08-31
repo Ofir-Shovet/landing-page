@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הרצאות וליווי אישי - מסע של תקווה והחלמה</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #8B7D6B 0%, #6B5B73 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .hero-section h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .hero-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: #D4A574;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background-color: #C19B68;
+        }
+        
+        .about-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #5D5D5D;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .about-image {
+            text-align: center;
+        }
+        
+        .about-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .services-section {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #5D5D5D;
+        }
+        
+        .service-card p {
+            font-size: 1rem;
+            color: #666;
+        }
+        
+        .contact-section {
+            padding: 80px 0;
+            background-color: #6B5B73;
+            color: white;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .contact-form h3 {
+            color: #5D5D5D;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #5D5D5D;
+            font-weight: 600;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+        
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-button {
+            width: 100%;
+            background-color: #8B7D6B;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .submit-button:hover {
+            background-color: #7A6F60;
+        }
+        
+        .testimonials-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .testimonial {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .testimonial p {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1>מסע של תקווה והחלמה</h1>
+            <p>הרצאות מעוררות השראה וליווי אישי בתהליכי שיקום וצמיחה אישית</p>
+            <a href="#contact" class="cta-button">צרו קשר עכשיו</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <h2 class="section-title">הסיפור שלי</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        <strong>שלום, אני [שם],</strong>
+                    </p>
+                    <p>
+                        עברתי תהליך שיקומי מורכב ומאתגר, שלימד אותי על כוחה של הנפש האנושית וההשפעה העצומה של תמיכה נכונה. היום, לאחר שנים של למידה, צמיחה והחלמה, אני כאן כדי לחלוק את הידע והכלים שלי עם אחרים.
+                    </p>
+                    <p>
+                        אני מאמינה שכל אדם יכול להתגבר על האתגרים בחייו ולמצוא את הדרך שלו להצלחה ולמימוש עצמי. בהרצאות שלי ובליווי האישי, אני מספקת כלים מעשיים, השראה אישית וחוויות שיעזרו לכם להתקדם בביטחון בדרך שלכם.
+                    </p>
+                </div>
+                <div class="about-image">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDQwMCA1MDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iNTAwIiBmaWxsPSIjZjBmMGYwIi8+Cjx0ZXh0IHg9IjIwMCIgeT0iMjUwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOTk5IiBmb250LXNpemU9IjE4Ij7Xqten15XXldeU16nXkCDXnNeV15bXkNeQ16o8L3RleHQ+Cjwvc3ZnPgo=" alt="תמונה אישית">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="container">
+            <h2 class="section-title">השירותים שלי</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>הרצאות מעוררות השראה</h3>
+                    <p>הרצאות אישיות ומעמיקות על תהליכי התמודדות, צמיחה אישית וחזרה לחיים מלאים. מתאים לקבוצות, ארגונים ואירועים מיוחדים.</p>
+                </div>
+                <div class="service-card">
+                    <h3>ליווי אישי</h3>
+                    <p>ליווי מקצועי ואמפתי לאנשים המתמודדים עם תהליכי שיקום וצמיחה אישית. תמיכה רגשית וכלים מעשיים להתקדמות.</p>
+                </div>
+                <div class="service-card">
+                    <h3>סדנאות קבוצתיות</h3>
+                    <p>סדנאות אינטראקטיביות המשלבות תיאוריה ותרגול, המיועדות לקבוצות המעוניינות בצמיחה משותפת וחיזוק הקשרים.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">צרו קשר</h2>
+            <div class="contact-form">
+                <h3>השאירו פרטים ואחזור אליכם בהקדם</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="name">שם מלא *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">אימייל *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">טלפון</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="service">איזה שירות מעניין אתכם?</label>
+                        <select id="service" name="service">
+                            <option value="">בחרו שירות</option>
+                            <option value="lecture">הרצאה</option>
+                            <option value="personal">ליווי אישי</option>
+                            <option value="workshop">סדנה קבוצתית</option>
+                            <option value="other">אחר</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">הודעה</label>
+                        <textarea id="message" name="message" placeholder="ספרו לי קצת על עצמכם ועל מה שחשוב לכם..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">שלחו הודעה</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Form submission (you'll need to replace this with actual form handling)
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('תודה על פנייתכם! אחזור אליכם בקרוב.');
+            // Here you would typically send the form data to a server
+        });
+    </script>
+</body>
+</html>
