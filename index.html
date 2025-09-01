@@ -304,12 +304,13 @@
             }
             
             .about-text {
-                order: 2;
+                order: 1;
             }
             
             .about-image {
-                order: 1;
+                order: 2;
                 text-align: center;
+                margin-top: 20px;
             }
             
             .about-image img {
@@ -367,7 +368,7 @@
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="container">
-            <h1>עופיר שובט</h1>
+            <h1> DOR </h1>
             <p>הרצאות מעוררות השראה וליווי אישי בתהליכי שיקום וצמיחה אישית</p>
             <a href="#contact" class="cta-button">צרו קשר עכשיו</a>
         </div>
@@ -394,7 +395,7 @@
             <div class="about-content">
                 <div class="about-text">
                     <p>
-                        <strong>שלום, אני [שם],</strong>
+                        <strong>שלום, שמי דור,</strong>
                     </p>
                     <p>
                         עברתי תהליך שיקומי מורכב ומאתגר, שלימד אותי על כוחה של הנפש האנושית וההשפעה העצומה של תמיכה נכונה. היום, לאחר שנים של למידה, צמיחה והחלמה, אני כאן כדי לחלוק את הידע והכלים שלי עם אחרים.
@@ -405,6 +406,8 @@
                 </div>
                 <div class="about-image">
                     <img src="IMG_7284.JPG" alt="עופיר שובט - תמונה אישית" style="max-width: 100%; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+
+
                 </div>
             </div>
         </div>
@@ -479,6 +482,32 @@
                     behavior: 'smooth'
                 });
             });
+        });
+
+        // Force video autoplay
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.querySelector('video');
+            if (video) {
+                video.muted = true;
+                video.loop = true;
+                
+                // Try to play immediately
+                const playPromise = video.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.catch(error => {
+                        console.log('Autoplay was prevented:', error);
+                        // If autoplay fails, try again on user interaction
+                        document.addEventListener('click', function() {
+                            video.play();
+                        }, { once: true });
+                        
+                        document.addEventListener('scroll', function() {
+                            video.play();
+                        }, { once: true });
+                    });
+                }
+            }
         });
 
         // Form submission (you'll need to replace this with actual form handling)
