@@ -438,7 +438,7 @@
             <h2 class="section-title">צרו קשר</h2>
             <div class="contact-form">
                 <h3>השאירו פרטים ואחזור אליכם בהקדם</h3>
-                <form>
+                <form action="https://formspree.io/f/mrbalklo" method="POST">
                     <div class="form-group">
                         <label for="name">שם מלא *</label>
                         <input type="text" id="name" name="name" required>
@@ -509,17 +509,6 @@
                         });
                     });
                 }
-            }
-        });
-
-        // Form submission
-        document.addEventListener('DOMContentLoaded', function() {
-            const form = document.querySelector('form');
-            if (form) {
-                form.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    alert('תודה על פנייתכם! אחזור אליכם בקרוב.');
-                });
             }
         });
     </script>
