@@ -368,7 +368,7 @@
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="container">
-            <h1> DOR </h1>
+            <h1>DOR</h1>
             <p>הרצאות מעוררות השראה וליווי אישי בתהליכי שיקום וצמיחה אישית</p>
             <a href="#contact" class="cta-button">צרו קשר עכשיו</a>
         </div>
@@ -406,8 +406,6 @@
                 </div>
                 <div class="about-image">
                     <img src="IMG_7284.JPG" alt="עופיר שובט - תמונה אישית" style="max-width: 100%; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-
-
                 </div>
             </div>
         </div>
@@ -484,37 +482,34 @@
             });
         });
 
-        // Force video autoplay
+        // Simple video autoplay - try once only
         document.addEventListener('DOMContentLoaded', function() {
             const video = document.querySelector('video');
             if (video) {
                 video.muted = true;
                 video.loop = true;
                 
-                // Try to play immediately
+                // Try to play immediately, but only once
                 const playPromise = video.play();
                 
                 if (playPromise !== undefined) {
                     playPromise.catch(error => {
-                        console.log('Autoplay was prevented:', error);
-                        // If autoplay fails, try again on user interaction
-                        document.addEventListener('click', function() {
-                            video.play();
-                        }, { once: true });
-                        
-                        document.addEventListener('scroll', function() {
-                            video.play();
-                        }, { once: true });
+                        console.log('Autoplay was prevented by browser');
+                        // Don't add more event listeners - just let user manually play if needed
                     });
                 }
             }
         });
 
-        // Form submission (you'll need to replace this with actual form handling)
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('תודה על פנייתכם! אחזור אליכם בקרוב.');
-            // Here you would typically send the form data to a server
+        // Form submission
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('form');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('תודה על פנייתכם! אחזור אליכם בקרוב.');
+                });
+            }
         });
     </script>
 </body>
