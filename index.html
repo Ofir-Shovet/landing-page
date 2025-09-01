@@ -4,104 +4,163 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>דור שפירא לילה – אל תקראו לי נס רפואי</title>
+
+  <!-- Google Fonts: Heebo (עברית מודרני) -->
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
   <style>
+    :root{
+      /* פלטת צבעים עדינה, נוטה לתכלת */
+      --bg: #d7e8ee;          /* רקע ראשי – תכלת בהיר */
+      --bg-hero2: #c3dfe8;    /* לגראדיאנט */
+      --ink: #23323a;         /* טקסט כהה */
+      --muted: #4e646f;       /* טקסט משני */
+      --card: #f7fbfd;        /* כרטיס בהיר */
+      --line: #e3eff4;        /* גבולות/חלוקה */
+      --accent: #a34728;      /* אדום-חום (מההזמנה) */
+      --accent-700: #84371f;
+      --white: #fff;
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(20, 40, 60, .10);
+    }
+
     *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{
-      font-family:'Georgia','Times New Roman',serif;
-      line-height:1.8;
-      color:#2f2f2f;
-      background:#d3e1d5;   /* ירקרק בהיר */
+      font-family:"Heebo", system-ui, -apple-system, "Segoe UI", "Noto Sans Hebrew", sans-serif;
+      color:var(--ink);
+      background:var(--bg);
+      line-height:1.85;
+      letter-spacing:.1px;
     }
-    .container{max-width:1100px;margin:0 auto;padding:0 20px}
+    .container{max-width:1120px;margin:0 auto;padding:0 20px}
 
-    /* HERO */
+    /* ===== HERO ===== */
     .hero{
-      background:linear-gradient(135deg,#d3e1d5 0%,#a7c0ad 100%);
-      color:#fff;
+      background: linear-gradient(135deg, var(--bg) 0%, var(--bg-hero2) 100%);
+      padding: 96px 0 84px;
       text-align:center;
-      padding:90px 0 70px;
+      position:relative;
+      overflow:hidden;
+      isolation:isolate;
     }
-    .hero h1{font-size:3.2rem;font-weight:800;letter-spacing:1px;margin-bottom:16px}
-    .hero p.lead{font-size:1.3rem;opacity:.95;margin-bottom:30px}
+    .hero::after{
+      content:"";
+      position:absolute; inset:-120px -40px auto auto; width:420px; height:420px;
+      background: radial-gradient(closest-side, rgba(255,255,255,.35), transparent 70%);
+      filter: blur(6px); z-index:-1; border-radius:50%;
+    }
+    .title-xl{
+      font-weight:900; font-size: clamp(2.2rem, 4vw, 3.4rem);
+      letter-spacing:.5px; margin-bottom:10px; color:var(--white);
+      text-shadow: 0 2px 12px rgba(0,0,0,.12);
+    }
+    .lead{
+      font-size:clamp(1.05rem, 2.2vw, 1.25rem);
+      color:#edf6fa; opacity:.95; margin-bottom:28px;
+    }
     .cta{
-      display:inline-block;background:#a34728;color:#fff;text-decoration:none;
-      padding:14px 28px;border-radius:999px;font-size:1.05rem;font-weight:600;
-      transition:.2s;box-shadow:0 8px 20px rgba(0,0,0,.18)
+      display:inline-block; background:var(--accent); color:var(--white);
+      text-decoration:none; padding:14px 28px; border-radius:999px;
+      font-weight:700; letter-spacing:.2px; transition:.18s; box-shadow: var(--shadow);
     }
-    .cta:hover{background:#84371f;transform:translateY(-1px)}
+    .cta:hover{ background:var(--accent-700); transform: translateY(-1px); }
 
-    /* GENERIC SECTIONS */
-    section{padding:64px 0}
+    /* ===== SECTIONS ===== */
+    section{ padding:72px 0; }
     .section-title{
-      font-size:2.2rem;text-align:center;margin-bottom:28px;font-weight:700;color:#2f2f2f
+      font-size: clamp(1.6rem, 2.4vw, 2rem);
+      font-weight:900; text-align:center; margin-bottom:22px; color:var(--ink);
     }
-    .muted{opacity:.9}
-
-    /* ABOUT */
-    .about-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:36px;align-items:center}
-    .about-card{
-      background:#f7fbf8;border:1px solid rgba(0,0,0,.05);
-      border-radius:14px;padding:26px 22px;box-shadow:0 8px 20px rgba(0,0,0,.06)
-    }
-    .about-card p{margin-bottom:14px}
-    .about-img img{width:100%;border-radius:12px;box-shadow:0 8px 22px rgba(0,0,0,.12)}
-
-    /* TALK */
-    .pill{display:inline-block;background:#ffffff;border:1px solid rgba(0,0,0,.06);
-      padding:10px 16px;border-radius:999px;font-weight:700;margin-bottom:14px}
-    .list{margin:10px 0 0 0}
-    .list li{margin:10px 0;padding-right:20px;position:relative}
-    .list li::before{
-      content:"•";position:absolute;right:0;color:#a34728;font-weight:900
+    .section-kicker{
+      text-align:center; color:var(--muted); margin: -4px 0 26px;
     }
 
-    /* CARDS ROW */
-    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:14px}
+    /* ===== ABOUT ===== */
+    .about-grid{
+      display:grid; grid-template-columns:1.15fr .85fr; gap:36px; align-items:center;
+    }
+    .about-box{
+      background:var(--card); border:1px solid var(--line); border-radius: var(--radius);
+      padding:26px 24px; box-shadow: var(--shadow);
+    }
+    .about-box p{ margin-bottom:14px; }
+    .about-strong{ font-weight:800; }
+    .about-img img{
+      width:100%; border-radius: var(--radius); box-shadow: var(--shadow);
+      display:block; object-fit:cover;
+    }
+
+    /* ===== TALK ===== */
+    .badge{
+      width:max-content; margin:0 auto 12px; padding:8px 14px;
+      border:1px solid var(--line); border-radius:999px; background:var(--white);
+      font-weight:800; color:var(--accent-700);
+    }
     .card{
-      background:#f1f6f3;border:1px solid rgba(0,0,0,.05);
-      border-radius:14px;padding:18px 16px;box-shadow:0 6px 18px rgba(0,0,0,.06)
+      background:var(--card); border:1px solid var(--line);
+      border-radius: var(--radius); padding:20px 18px; box-shadow: var(--shadow);
     }
-    .card h4{margin-bottom:8px}
+    .cards{
+      display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
+      gap:18px; margin-top:14px;
+    }
 
-    /* CONTACT */
-    .contact{background:#a7c0ad}
-    .contact-inner{
-      display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start
+    /* ===== “למי זה מתאים?” ללא נקודות – תגיות/כרטיסי-פס ===== */
+    .fit-chips{
+      display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:12px; margin-top:8px;
     }
-    .contact-box{
-      background:#fff;border-radius:12px;padding:22px;border:1px solid rgba(0,0,0,.06);
-      box-shadow:0 8px 20px rgba(0,0,0,.08)
+    .chip{
+      display:flex; align-items:center; gap:10px; border:1px solid var(--line);
+      background:var(--white); padding:14px 16px; border-radius:12px; box-shadow: var(--shadow);
+      font-weight:600; color:var(--muted);
     }
-    .contact h3{margin-bottom:12px}
-    label{display:block;margin:8px 0 4px;font-weight:700}
-    input,textarea,select{
-      width:100%;padding:12px;border:1px solid #cfcfcf;border-radius:8px;font:inherit
+    .chip .dot{
+      width:10px; height:10px; border-radius:50%; background:var(--accent);
+      box-shadow:0 0 0 4px rgba(163,71,40,.12);
+      flex:0 0 auto;
     }
-    textarea{min-height:120px;resize:vertical}
-    .btn{
-      width:100%;background:#a34728;color:#fff;border:none;border-radius:10px;
-      padding:14px 16px;font-weight:700;cursor:pointer;transition:.2s;margin-top:6px
-    }
-    .btn:hover{background:#84371f}
 
-    .contacts-list{line-height:2}
-    .contacts-list a{color:#a34728;text-decoration:none}
-    .contacts-list a:hover{text-decoration:underline}
+    /* ===== COACHING ===== */
+    .sub{ color:var(--muted); text-align:center; max-width:760px; margin:0 auto 18px; }
 
-    /* TESTIMONIALS */
-    .testi{background:#ffffff0f}
-    .quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:12px}
+    /* ===== TESTIMONIALS ===== */
+    .quotes{ display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:16px; }
     .quote{
-      background:#ffffff;border:1px solid rgba(0,0,0,.06);
-      border-radius:12px;padding:18px;box-shadow:0 8px 20px rgba(0,0,0,.06);font-style:italic
+      background:var(--white); border:1px solid var(--line); border-radius:14px;
+      padding:18px; box-shadow: var(--shadow); font-style:italic; color:var(--muted);
     }
 
-    footer{padding:28px 0;text-align:center;color:#2f2f2f;opacity:.8}
+    /* ===== CONTACT ===== */
+    .contact{ background: linear-gradient(135deg, var(--bg-hero2) 0%, var(--bg) 100%); }
+    .contact-inner{ display:grid; grid-template-columns:1fr 1fr; gap:26px; align-items:start; }
+    .contact-box{
+      background:var(--white); border:1px solid var(--line); border-radius:14px;
+      padding:22px; box-shadow: var(--shadow);
+    }
+    label{display:block; margin:10px 0 6px; font-weight:800; color:var(--ink);}
+    input,textarea,select{
+      width:100%; padding:12px 12px; border:1px solid #cfdfe6; border-radius:10px;
+      background:#f9fcfe; font:inherit; color:var(--ink);
+    }
+    textarea{min-height:120px; resize:vertical}
+    .btn{
+      width:100%; background:var(--accent); color:var(--white); border:none;
+      border-radius:12px; padding:14px 16px; font-weight:800; margin-top:10px;
+      cursor:pointer; transition:.18s;
+    }
+    .btn:hover{ background:var(--accent-700); }
 
-    @media (max-width:900px){
-      .about-grid{grid-template-columns:1fr}
-      .contact-inner{grid-template-columns:1fr}
-      .hero h1{font-size:2.2rem}
+    .contacts-list{ line-height:2; }
+    .contacts-list a{ color:var(--accent); text-decoration:none; }
+    .contacts-list a:hover{ text-decoration:underline; }
+
+    footer{ padding:28px 0; text-align:center; color:var(--muted); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 980px){
+      .about-grid{ grid-template-columns:1fr; }
+      .contact-inner{ grid-template-columns:1fr; }
     }
   </style>
 </head>
@@ -110,7 +169,7 @@
   <!-- HERO -->
   <header class="hero">
     <div class="container">
-      <h1>אל תקראו לי נס רפואי</h1>
+      <h1 class="title-xl">אל תקראו לי נס רפואי</h1>
       <p class="lead">הרצאה ותוכנית ליווי אישית על הכוח לשנות מציאות מבפנים החוצה</p>
       <a href="#contact" class="cta">צרו קשר עכשיו</a>
     </div>
@@ -120,13 +179,14 @@
   <section id="about">
     <div class="container">
       <h2 class="section-title">נעים להכיר, אני דור שפירא לילה</h2>
+      <p class="section-kicker">בחירה יומיומית לקום, להאמין, ולהגיד "כן" לחיים.</p>
 
       <div class="about-grid">
-        <div class="about-card">
+        <div class="about-box">
           <p>עברתי שיקום פיזי מאתגר, כזה שגורם לסובבים להגיד “איזה נס את”.</p>
-          <p><strong>אבל האמת? זה לא נס.</strong></p>
+          <p class="about-strong">אבל האמת? זה לא נס.</p>
           <p>זו בחירה יומיומית לקום, להאמין, ולהגיד "כן" לחיים גם כשקל יותר להגיד "די".</p>
-          <p>היום, אחרי הניסיון שצברתי והכלים שרכשתי, אני עומדת מול קהלים ומול אנשים בתהליכי שיקום ומראה שאפשר לבחור אחרת – גם כשהחיים מציבים בפנינו אתגרים קלים וגדולים מידי יום.</p>
+          <p>היום, אחרי הניסיון שצברתי והכלים שרכשתי, אני עומדת מול קהלים ומול אנשים בתהליכי שיקום ומראה שאפשר לבחור אחרת – גם כשהחיים מציבים בפנינו אתגרים קלים וגדולים מדי יום.</p>
         </div>
         <div class="about-img">
           <img src="IMG_7284.JPG" alt="דור שפירא לילה">
@@ -138,32 +198,32 @@
   <!-- TALK -->
   <section id="talk">
     <div class="container">
-      <div class="pill">ההרצאה – "אל תקראו לי נס רפואי"</div>
-      <h2 class="section-title" style="margin-top:6px">ההרצאה</h2>
-      <div class="cards">
-        <div class="card">
-          <p class="muted">
-            זו הרצאה חיה שכל מילה בה יוצאת מעומק הלב שלי ובעיקר מניסיון אמיתי בתהליך שיקום ארוך שנמשך בכל יום מחדש.
-            זו הרצאה שתצליח לגעת לכם בלב ולעורר בכם השראה – הרצאה שנבנתה מתוך הסיפור האישי שלי, אבל מיועדת לכולם.
-          </p>
-        </div>
+      <div class="badge">ההרצאה – "אל תקראו לי נס רפואי"</div>
+      <h2 class="section-title">ההרצאה</h2>
+
+      <div class="card" style="max-width:820px;margin:0 auto;">
+        <p>
+          זו הרצאה חיה שכל מילה בה יוצאת מעומק הלב שלי ובעיקר מניסיון אמיתי בתהליך שיקום ארוך שנמשך בכל יום מחדש.
+          זו הרצאה שתצליח לגעת לכם בלב ולעורר בכם השראה – הרצאה שנבנתה מתוך הסיפור האישי שלי, אבל מיועדת לכולם.
+        </p>
       </div>
 
-      <h3 class="section-title" style="font-size:1.6rem;margin-top:28px">למי זה מתאים?</h3>
-      <ul class="list">
-        <li>חברות וארגונים שמבינים שעובדים צריכים השראה, לא רק טבלאות אקסל.</li>
-        <li>מחלקות רווחה ומשאבי אנוש שרוצים להביא תוכן שמניע אנשים לבחור נכון גם בקושי.</li>
-        <li>מרכזי שיקום, עמותות וקהילות – מקום שבו אמונה ותודעה הן חלק מהטיפול.</li>
-        <li>ובעצם… לכל מי שיש לו לב ודופק.</li>
-      </ul>
-
-      <h3 class="section-title" style="font-size:1.6rem;margin-top:28px">מה יוצא מזה?</h3>
-      <div class="cards">
-        <div class="card"><h4>יכולת בחירה</h4><p>להתמודד אחרת עם קושי (לא, לא רק רפואי).</p></div>
-        <div class="card"><h4>כלים תודעתיים</h4><p>לחשיבה חיובית כשמסביב בטוחים שהכול שחור.</p></div>
-        <div class="card"><h4>חיבור לאמונה</h4><p>וליכולת האישית להתגבר על כל אתגר.</p></div>
+      <h3 class="section-title" style="font-size:1.4rem;margin-top:28px">למי זה מתאים?</h3>
+      <!-- בלי נקודות – “כרטיסי תגיות” -->
+      <div class="fit-chips">
+        <div class="chip"><span class="dot"></span>חברות וארגונים שמבינים שעובדים צריכים השראה, לא רק טבלאות אקסל</div>
+        <div class="chip"><span class="dot"></span>מחלקות רווחה ומשאבי אנוש שרוצים להביא תוכן שמניע לבחור נכון גם בקושי</div>
+        <div class="chip"><span class="dot"></span>מרכזי שיקום, עמותות וקהילות – מקום שבו אמונה ותודעה הן חלק מהטיפול</div>
+        <div class="chip"><span class="dot"></span>ובעצם… לכל מי שיש לו לב ודופק</div>
       </div>
-      <p style="margin-top:10px"><strong>אזהרה קטנה:</strong> ייתכן שתצאו מההרצאה עם ניצוץ בעיניים.</p>
+
+      <h3 class="section-title" style="font-size:1.4rem;margin-top:30px">מה יוצא מזה?</h3>
+      <div class="cards">
+        <div class="card"><h4 style="margin-bottom:6px">יכולת בחירה</h4><p>להתמודד אחרת עם קושי (לא, לא רק רפואי).</p></div>
+        <div class="card"><h4 style="margin-bottom:6px">כלים תודעתיים</h4><p>לחשיבה חיובית כשמסביב בטוחים שהכול שחור.</p></div>
+        <div class="card"><h4 style="margin-bottom:6px">חיבור לאמונה</h4><p>וליכולת האישית להתגבר על כל אתגר.</p></div>
+      </div>
+      <p style="margin-top:10px; text-align:center"><strong>אזהרה קטנה:</strong> ייתכן שתצאו מההרצאה עם ניצוץ בעיניים.</p>
     </div>
   </section>
 
@@ -171,22 +231,22 @@
   <section id="coaching">
     <div class="container">
       <h2 class="section-title">תוכנית הליווי האישי</h2>
-      <p class="muted" style="text-align:center;margin-bottom:14px">
+      <p class="sub">
         כשההרצאה נגמרת, החיים נמשכים. לכן אני מציעה ליווי אישי מותאם למי שנמצא בתהליך שיקום פיזי או נפשי.
       </p>
 
       <div class="cards">
         <div class="card">
-          <h4>איך זה עובד?</h4>
+          <h4 style="margin-bottom:6px">איך זה עובד?</h4>
           <p>תוכנית ליווי של 4 / 8 / 12 מפגשים – פרונטלית או בזום – שבה נעבוד יחד על:</p>
-          <ul class="list" style="margin-top:6px">
-            <li>חיזוק התודעה גם ברגעים הפחות יפים</li>
-            <li>בחירה מודעת מול אתגרים יומיומיים</li>
-            <li>בניית שגרה פרקטית שמחזיקה מים</li>
-          </ul>
+          <div style="margin-top:8px">
+            • חיזוק התודעה גם ברגעים הפחות יפים<br/>
+            • בחירה מודעת מול אתגרים יומיומיים<br/>
+            • בניית שגרה פרקטית שמחזיקה מים
+          </div>
         </div>
         <div class="card">
-          <h4>למי זה מתאים?</h4>
+          <h4 style="margin-bottom:6px">למי זה מתאים?</h4>
           <p>לכל מי שעובר שיקום ומבין שהגוף מטופל – אבל הנפש? היא זקוקה לאימון לא פחות.</p>
         </div>
       </div>
@@ -194,7 +254,7 @@
   </section>
 
   <!-- TESTIMONIALS -->
-  <section class="testi">
+  <section>
     <div class="container">
       <h2 class="section-title">מה מספרים עליי</h2>
       <div class="quotes">
@@ -208,23 +268,21 @@
   <!-- CONTACT -->
   <section id="contact" class="contact">
     <div class="container">
-      <h2 class="section-title" style="color:#2f2f2f">בואו נתחיל</h2>
-      <p class="muted" style="text-align:center;margin:-8px 0 22px">
-        רוצים להזמין הרצאה שלא משאירה אף אחד אדיש? מחפשים ליווי אישי שיראה איך לבחור אחרת גם כשקשה?
-      </p>
+      <h2 class="section-title">בואו נתחיל</h2>
+      <p class="section-kicker">השאירו פרטים או צרו קשר ישירות.</p>
 
       <div class="contact-inner">
         <div class="contact-box">
-          <h3>שלחו פרטים</h3>
+          <h3 style="margin-bottom:8px">טופס יצירת קשר</h3>
           <form action="https://formspree.io/f/mrbalklo" method="POST">
             <label for="name">שם מלא *</label>
-            <input id="name" name="name" type="text" required/>
+            <input id="name" name="name" type="text" required>
 
             <label for="email">אימייל *</label>
-            <input id="email" name="email" type="email" required/>
+            <input id="email" name="email" type="email" required>
 
             <label for="phone">טלפון</label>
-            <input id="phone" name="phone" type="tel"/>
+            <input id="phone" name="phone" type="tel">
 
             <label for="service">מה מעניין אתכם?</label>
             <select id="service" name="service">
@@ -236,38 +294,25 @@
             </select>
 
             <label for="message">הודעה</label>
-            <textarea id="message" name="message" placeholder="ספרו לי בקצרה מה חשוב לכם..."></textarea>
+            <textarea id="message" name="message" placeholder="ספרו בקצרה מה חשוב לכם..."></textarea>
 
             <button class="btn" type="submit">שלחו הודעה</button>
           </form>
         </div>
 
         <div class="contact-box">
-          <h3>פרטי קשר</h3>
+          <h3 style="margin-bottom:8px">פרטי קשר</h3>
           <div class="contacts-list">
             <div>מייל: <a href="mailto:dorsh8036@gmail.com">dorsh8036@gmail.com</a></div>
             <div>טלפון: <a href="tel:0546664610">054-666-4610</a></div>
           </div>
-          <p style="margin-top:12px" class="muted">
-            אפשר לכתוב לי מייל או הודעת וואטסאפ, ואשוב אליכם בהקדם.
-          </p>
+          <p style="margin-top:10px;color:var(--muted)">אפשר לשלוח הודעת וואטסאפ או מייל – אחזור אליכם בהקדם.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <footer>
-    © דור שפירא לילה
-  </footer>
+  <footer>© דור שפירא לילה</footer>
 
-  <script>
-    // גלילה חלקה לכפתור "צרו קשר עכשיו"
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click',e=>{
-        const id=a.getAttribute('href'); if(!id||id==="#")return;
-        e.preventDefault(); document.querySelector(id).scrollIntoView({behavior:'smooth'});
-      });
-    });
-  </script>
 </body>
 </html>
