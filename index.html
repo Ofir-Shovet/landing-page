@@ -5,162 +5,108 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>דור שפירא לילה – אל תקראו לי נס רפואי</title>
 
-  <!-- Google Fonts: Heebo (עברית מודרני) -->
+  <!-- Heebo – פונט עברי מודרני -->
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      /* פלטת צבעים עדינה, נוטה לתכלת */
-      --bg: #d7e8ee;          /* רקע ראשי – תכלת בהיר */
-      --bg-hero2: #c3dfe8;    /* לגראדיאנט */
-      --ink: #23323a;         /* טקסט כהה */
-      --muted: #4e646f;       /* טקסט משני */
-      --card: #f7fbfd;        /* כרטיס בהיר */
-      --line: #e3eff4;        /* גבולות/חלוקה */
-      --accent: #a34728;      /* אדום-חום (מההזמנה) */
-      --accent-700: #84371f;
-      --white: #fff;
-      --radius: 16px;
-      --shadow: 0 10px 30px rgba(20, 40, 60, .10);
+      --bg:#d7e8ee;        /* רקע תכול רך */
+      --bg-hero2:#c3dfe8;  /* גרדיאנט משלים */
+      --ink:#23323a;       /* טקסט כהה */
+      --muted:#4e646f;     /* טקסט משני */
+      --card:#f7fbfd;      /* כרטיס בהיר */
+      --line:#e3eff4;      /* גבולות */
+      --accent:#a34728;    /* אדום-חום מההזמנה */
+      --accent-700:#84371f;
+      --white:#fff;
+      --radius:16px;
+      --shadow:0 10px 30px rgba(20,40,60,.10);
     }
-
     *{margin:0;padding:0;box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
-      font-family:"Heebo", system-ui, -apple-system, "Segoe UI", "Noto Sans Hebrew", sans-serif;
-      color:var(--ink);
-      background:var(--bg);
-      line-height:1.85;
-      letter-spacing:.1px;
+      font-family:"Heebo",system-ui,-apple-system,"Segoe UI","Noto Sans Hebrew",sans-serif;
+      color:var(--ink); background:var(--bg); line-height:1.85; letter-spacing:.1px;
     }
     .container{max-width:1120px;margin:0 auto;padding:0 20px}
 
-    /* ===== HERO ===== */
+    /* HERO */
     .hero{
-      background: linear-gradient(135deg, var(--bg) 0%, var(--bg-hero2) 100%);
-      padding: 96px 0 84px;
-      text-align:center;
-      position:relative;
-      overflow:hidden;
-      isolation:isolate;
+      background:linear-gradient(135deg,var(--bg) 0%,var(--bg-hero2) 100%);
+      padding:96px 0 84px; text-align:center; position:relative; overflow:hidden; isolation:isolate;
     }
     .hero::after{
-      content:"";
-      position:absolute; inset:-120px -40px auto auto; width:420px; height:420px;
-      background: radial-gradient(closest-side, rgba(255,255,255,.35), transparent 70%);
-      filter: blur(6px); z-index:-1; border-radius:50%;
+      content:""; position:absolute; inset:-120px -40px auto auto; width:420px; height:420px;
+      background:radial-gradient(closest-side,rgba(255,255,255,.35),transparent 70%);
+      filter:blur(6px); z-index:-1; border-radius:50%;
     }
-    .title-xl{
-      font-weight:900; font-size: clamp(2.2rem, 4vw, 3.4rem);
-      letter-spacing:.5px; margin-bottom:10px; color:var(--white);
-      text-shadow: 0 2px 12px rgba(0,0,0,.12);
-    }
-    .lead{
-      font-size:clamp(1.05rem, 2.2vw, 1.25rem);
-      color:#edf6fa; opacity:.95; margin-bottom:28px;
-    }
-    .cta{
-      display:inline-block; background:var(--accent); color:var(--white);
-      text-decoration:none; padding:14px 28px; border-radius:999px;
-      font-weight:700; letter-spacing:.2px; transition:.18s; box-shadow: var(--shadow);
-    }
-    .cta:hover{ background:var(--accent-700); transform: translateY(-1px); }
+    .title-xl{font-weight:900;font-size:clamp(2.2rem,4vw,3.4rem);letter-spacing:.5px;margin-bottom:10px;color:var(--white);text-shadow:0 2px 12px rgba(0,0,0,.12)}
+    .lead{font-size:clamp(1.05rem,2.2vw,1.25rem);color:#edf6fa;opacity:.95;margin-bottom:28px}
+    .cta{display:inline-block;background:var(--accent);color:var(--white);text-decoration:none;padding:14px 28px;border-radius:999px;font-weight:700;letter-spacing:.2px;transition:.18s;box-shadow:var(--shadow)}
+    .cta:hover{background:var(--accent-700);transform:translateY(-1px)}
 
-    /* ===== SECTIONS ===== */
-    section{ padding:72px 0; }
-    .section-title{
-      font-size: clamp(1.6rem, 2.4vw, 2rem);
-      font-weight:900; text-align:center; margin-bottom:22px; color:var(--ink);
-    }
-    .section-kicker{
-      text-align:center; color:var(--muted); margin: -4px 0 26px;
-    }
+    /* SECTIONS */
+    section{padding:72px 0}
+    .section-title{font-size:clamp(1.6rem,2.4vw,2rem);font-weight:900;text-align:center;margin-bottom:22px;color:var(--ink)}
+    .section-kicker{text-align:center;color:var(--muted);margin:-4px 0 26px}
 
-    /* ===== ABOUT ===== */
-    .about-grid{
-      display:grid; grid-template-columns:1.15fr .85fr; gap:36px; align-items:center;
-    }
-    .about-box{
-      background:var(--card); border:1px solid var(--line); border-radius: var(--radius);
-      padding:26px 24px; box-shadow: var(--shadow);
-    }
-    .about-box p{ margin-bottom:14px; }
-    .about-strong{ font-weight:800; }
+    /* ABOUT */
+    .about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:36px;align-items:center}
+    .about-box{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px 24px;box-shadow:var(--shadow)}
+    .about-box p{margin-bottom:14px}
+    .about-strong{font-weight:800}
+    .about-img{display:flex;align-items:center;justify-content:center}
     .about-img img{
-      width:100%; border-radius: var(--radius); box-shadow: var(--shadow);
-      display:block; object-fit:cover;
+      width:100%; max-width:280px; /* 👈 הקטנתי את תמונת הפנים */
+      border-radius:var(--radius); box-shadow:var(--shadow); display:block; object-fit:cover;
     }
 
-    /* ===== TALK ===== */
-    .badge{
-      width:max-content; margin:0 auto 12px; padding:8px 14px;
-      border:1px solid var(--line); border-radius:999px; background:var(--white);
-      font-weight:800; color:var(--accent-700);
+    /* VIDEO */
+    .video-section{padding:56px 0 0}
+    .video-wrap{
+      max-width:860px;margin:0 auto;background:var(--card);border:1px solid var(--line);
+      border-radius:20px;box-shadow:var(--shadow);overflow:hidden
     }
-    .card{
-      background:var(--card); border:1px solid var(--line);
-      border-radius: var(--radius); padding:20px 18px; box-shadow: var(--shadow);
+    .video-frame{
+      width:100%;aspect-ratio:16/9;background:#000;display:block;outline:none
     }
-    .cards{
-      display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
-      gap:18px; margin-top:14px;
-    }
+    .video-caption{padding:12px 16px;color:var(--muted);font-size:.95rem}
 
-    /* ===== “למי זה מתאים?” ללא נקודות – תגיות/כרטיסי-פס ===== */
-    .fit-chips{
-      display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:12px; margin-top:8px;
-    }
-    .chip{
-      display:flex; align-items:center; gap:10px; border:1px solid var(--line);
-      background:var(--white); padding:14px 16px; border-radius:12px; box-shadow: var(--shadow);
-      font-weight:600; color:var(--muted);
-    }
-    .chip .dot{
-      width:10px; height:10px; border-radius:50%; background:var(--accent);
-      box-shadow:0 0 0 4px rgba(163,71,40,.12);
-      flex:0 0 auto;
-    }
+    /* TALK */
+    .badge{width:max-content;margin:0 auto 12px;padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:var(--white);font-weight:800;color:var(--accent-700)}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px 18px;box-shadow:var(--shadow)}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:14px}
 
-    /* ===== COACHING ===== */
-    .sub{ color:var(--muted); text-align:center; max-width:760px; margin:0 auto 18px; }
+    /* “למי זה מתאים?” – תגיות ללא נקודות */
+    .fit-chips{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:8px}
+    .chip{display:flex;align-items:center;gap:10px;border:1px solid var(--line);background:var(--white);padding:14px 16px;border-radius:12px;box-shadow:var(--shadow);font-weight:600;color:var(--muted)}
+    .chip .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(163,71,40,.12);flex:0 0 auto}
 
-    /* ===== TESTIMONIALS ===== */
-    .quotes{ display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:16px; }
-    .quote{
-      background:var(--white); border:1px solid var(--line); border-radius:14px;
-      padding:18px; box-shadow: var(--shadow); font-style:italic; color:var(--muted);
-    }
+    /* COACHING */
+    .sub{color:var(--muted);text-align:center;max-width:760px;margin:0 auto 18px}
 
-    /* ===== CONTACT ===== */
-    .contact{ background: linear-gradient(135deg, var(--bg-hero2) 0%, var(--bg) 100%); }
-    .contact-inner{ display:grid; grid-template-columns:1fr 1fr; gap:26px; align-items:start; }
-    .contact-box{
-      background:var(--white); border:1px solid var(--line); border-radius:14px;
-      padding:22px; box-shadow: var(--shadow);
-    }
-    label{display:block; margin:10px 0 6px; font-weight:800; color:var(--ink);}
-    input,textarea,select{
-      width:100%; padding:12px 12px; border:1px solid #cfdfe6; border-radius:10px;
-      background:#f9fcfe; font:inherit; color:var(--ink);
-    }
-    textarea{min-height:120px; resize:vertical}
-    .btn{
-      width:100%; background:var(--accent); color:var(--white); border:none;
-      border-radius:12px; padding:14px 16px; font-weight:800; margin-top:10px;
-      cursor:pointer; transition:.18s;
-    }
-    .btn:hover{ background:var(--accent-700); }
+    /* TESTIMONIALS */
+    .quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+    .quote{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow);font-style:italic;color:var(--muted)}
 
-    .contacts-list{ line-height:2; }
-    .contacts-list a{ color:var(--accent); text-decoration:none; }
-    .contacts-list a:hover{ text-decoration:underline; }
+    /* CONTACT */
+    .contact{background:linear-gradient(135deg,var(--bg-hero2) 0%,var(--bg) 100%)}
+    .contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start}
+    .contact-box{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:var(--shadow)}
+    label{display:block;margin:10px 0 6px;font-weight:800;color:var(--ink)}
+    input,textarea,select{width:100%;padding:12px;border:1px solid #cfdfe6;border-radius:10px;background:#f9fcfe;font:inherit;color:var(--ink)}
+    textarea{min-height:120px;resize:vertical}
+    .btn{width:100%;background:var(--accent);color:#fff;border:none;border-radius:12px;padding:14px 16px;font-weight:800;margin-top:10px;cursor:pointer;transition:.18s}
+    .btn:hover{background:var(--accent-700)}
+    .contacts-list{line-height:2}
+    .contacts-list a{color:var(--accent);text-decoration:none}
+    .contacts-list a:hover{text-decoration:underline}
 
-    footer{ padding:28px 0; text-align:center; color:var(--muted); }
+    footer{padding:28px 0;text-align:center;color:var(--muted)}
 
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 980px){
-      .about-grid{ grid-template-columns:1fr; }
-      .contact-inner{ grid-template-columns:1fr; }
+    @media (max-width:980px){
+      .about-grid{grid-template-columns:1fr}
+      .contact-inner{grid-template-columns:1fr}
     }
   </style>
 </head>
@@ -188,9 +134,28 @@
           <p>זו בחירה יומיומית לקום, להאמין, ולהגיד "כן" לחיים גם כשקל יותר להגיד "די".</p>
           <p>היום, אחרי הניסיון שצברתי והכלים שרכשתי, אני עומדת מול קהלים ומול אנשים בתהליכי שיקום ומראה שאפשר לבחור אחרת – גם כשהחיים מציבים בפנינו אתגרים קלים וגדולים מדי יום.</p>
         </div>
+
+        <!-- 👇 תמונת פנים מוקטנת -->
         <div class="about-img">
           <img src="IMG_7284.JPG" alt="דור שפירא לילה">
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO (חזרנו את הסרטון) -->
+  <section class="video-section" aria-labelledby="video-title">
+    <div class="container">
+      <h2 id="video-title" class="section-title">הכירו אותי</h2>
+      <p class="section-kicker">דקה וחצי שמספרת את כל הסיפור.</p>
+
+      <div class="video-wrap">
+        <video class="video-frame" controls playsinline>
+          <source src="סרטון.mp4" type="video/mp4">
+          <source src="video.mov" type="video/quicktime">
+          הדפדפן שלך לא תומך בהצגת וידאו.
+        </video>
+        <div class="video-caption">קטע קצר מתוך ההרצאה ותהליך הליווי.</div>
       </div>
     </div>
   </section>
@@ -209,7 +174,7 @@
       </div>
 
       <h3 class="section-title" style="font-size:1.4rem;margin-top:28px">למי זה מתאים?</h3>
-      <!-- בלי נקודות – “כרטיסי תגיות” -->
+      <!-- תגיות ללא נקודות -->
       <div class="fit-chips">
         <div class="chip"><span class="dot"></span>חברות וארגונים שמבינים שעובדים צריכים השראה, לא רק טבלאות אקסל</div>
         <div class="chip"><span class="dot"></span>מחלקות רווחה ומשאבי אנוש שרוצים להביא תוכן שמניע לבחור נכון גם בקושי</div>
@@ -223,17 +188,15 @@
         <div class="card"><h4 style="margin-bottom:6px">כלים תודעתיים</h4><p>לחשיבה חיובית כשמסביב בטוחים שהכול שחור.</p></div>
         <div class="card"><h4 style="margin-bottom:6px">חיבור לאמונה</h4><p>וליכולת האישית להתגבר על כל אתגר.</p></div>
       </div>
-      <p style="margin-top:10px; text-align:center"><strong>אזהרה קטנה:</strong> ייתכן שתצאו מההרצאה עם ניצוץ בעיניים.</p>
+      <p style="margin-top:10px;text-align:center"><strong>אזהרה קטנה:</strong> ייתכן שתצאו מההרצאה עם ניצוץ בעיניים.</p>
     </div>
   </section>
 
   <!-- COACHING -->
   <section id="coaching">
     <div class="container">
-      <h2 class="section-title">תוכנית הליווי האישי</h2>
-      <p class="sub">
-        כשההרצאה נגמרת, החיים נמשכים. לכן אני מציעה ליווי אישי מותאם למי שנמצא בתהליך שיקום פיזי או נפשי.
-      </p>
+      <h2 class="section-title">תוכנית הליווי האישית</h2>
+      <p class="sub">כשההרצאה נגמרת, החיים נמשכים. ליווי אישי מותאם למי שנמצא בתהליך שיקום פיזי או נפשי.</p>
 
       <div class="cards">
         <div class="card">
@@ -313,6 +276,5 @@
   </section>
 
   <footer>© דור שפירא לילה</footer>
-
 </body>
 </html>
